@@ -1,0 +1,27 @@
+extends base
+
+mixin navItem(link, text, icon, activeTab)
+  li(class=`${activeTab ? 'side-nav--active' : ''}`)
+    a(href=`${link}`)
+      svg
+        use(xlink:href=`/img/icons.svg#icon-${icon}`)
+      | #{text}
+
+block content
+  main.main
+    .user-view
+      nav.user-view__menu
+        ul.side-nav
+          +navItem('/profile','Settings', 'settings', active === 'profile true' ? true : false)
+          +navItem('/profile/my-bookings', 'My Bookings', 'briefcase', active === 'bookings true' ? true : false)
+          +navItem('#', 'My Reviews', 'star', active === 'reviews true' ? true : false)
+          +navItem("#", 'Billing', 'credit-card', active === 'billing true' ? true : false)
+        - if (user.role === 'admin' || user.role === 'lead-guide')
+          .admin-nav
+            h5.admin-nav__heading Admin
+            ul.side-nav
+              +navItem('#', 'Manage Tours', 'map', false)
+              +navItem('#', 'Manage Bookings', 'briefcase', false)
+              +navItem('#', 'Manage Users', 'users', false)
+              +navItem('#', 'Manage Reviews', 'star', false)
+      block page

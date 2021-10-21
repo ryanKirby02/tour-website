@@ -3,7 +3,7 @@ import { showAlert } from './alerts';
 
 export const resetUserPassword = async (password, confirmPassword, token) => {
   try {
-    const result = await axios.patch(`http://127.0.0.1:5000/api/v1/users/reset-password/${token}`, {
+    const result = await axios.patch(`/api/v1/users/reset-password/${token}`, {
       password,
       confirmPassword,
     });
@@ -22,7 +22,7 @@ export const resetUserPassword = async (password, confirmPassword, token) => {
 
 export const sendPasswordReset = async (email) => {
   try {
-    const result = await axios.post(`http://127.0.0.1:5000/api/v1/users/forgot-password`, {
+    const result = await axios.post(`/api/v1/users/forgot-password`, {
       email,
     });
     if (result.data.status === 'success') {

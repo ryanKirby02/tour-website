@@ -33,7 +33,6 @@ export const DeleteOldPhotoFromServer = async (photo) => {
   const path = `./public/img/users/${photo}`;
   await fs.unlink(path, (err) => {
     if (err) return console.log(err);
-    console.log('the previous photo has been deleted');
   });
 };
 

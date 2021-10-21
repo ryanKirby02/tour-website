@@ -6,6 +6,7 @@ import mongoSanitize from 'express-mongo-sanitize';
 import xss from 'xss-clean';
 import hpp from 'hpp';
 import cookieParser from 'cookie-parser';
+import compression from 'compression';
 
 import AppError from './utils/appError.js';
 import { errorHandler } from './controllers/errorController.js';
@@ -111,6 +112,8 @@ app.use(
     ],
   })
 );
+
+app.use(compression());
 
 // 3) ROUTES
 app.use('/', viewRouter);

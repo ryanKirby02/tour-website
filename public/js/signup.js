@@ -3,7 +3,7 @@ import { showAlert } from './alerts';
 
 export const signup = async (name, email, password, confirmPassword) => {
   try {
-    const result = await axios.post('http://127.0.0.1:5000/api/v1/users/signup', {
+    const result = await axios.post('/api/v1/users/signup', {
       name,
       email,
       password,
